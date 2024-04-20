@@ -1,0 +1,89 @@
+/* input {
+  color: #242424;
+} */
+.container {
+  width: 100vw;
+  margin-top: 8rem;
+}
+.container-input-file {
+  margin: 0 auto;
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+}
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  width: 160px;
+  padding: 10px 0;
+  height: 32px;
+  background: #7f5539;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 16px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-input-file img {
+  height: 20px;
+  width: auto;
+  margin-right: 0.5rem;
+}
+.container-input-file button {
+  padding: 25px 35px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 16px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-input-file button:focus {
+  outline: 0;
+}
+span {
+  display: block;
+  margin: 1.2rem 0 1rem 0;
+  font-size: 1.1rem;
+  color: #242424;
+  text-align: center;
+}
+.container-table {
+  height: 350px;
+  overflow-y: auto;
+}
+table {
+  margin: 3rem auto;
+  border-collapse: collapse;
+  width: 90%;
+}
+.first-th {
+  border: transparent;
+}
+
+th,
+td {
+  border: 1px solid #5a5959;
+  padding: 8px;
+  text-align: left;
+  color: #242424;
+}
+td {
+  width: 50%; /* Define a largura das células */
+}
+.number-td {
+  width: 5%;
+  text-align: center;
+}
