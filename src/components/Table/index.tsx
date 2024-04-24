@@ -1,36 +1,63 @@
-import { CSVData } from "../../models/CSVData";
+import { useState } from "react";
+import { AnimalData } from "../../models/CSVData";
 import "./index.css";
 
 type TableProps = {
-  csvData: CSVData[];
+  data: AnimalData[];
 };
 
-const Table = ({ csvData }: TableProps) => {
+const Table = ({ data }: TableProps) => {
+  const [searchVID, setSearchVID] = useState("");
+  const [searchWeight, setSearchWeight] = useState("");
+
+  const filteredData = data.filter((row) => {
+    if (searchVID) {
+      return row.bottom.toLowerCase().includes(searchVID.toLowerCase());
+    }
+    if (searchWeight) {
+      return row.weight.toString().startsWith(searchWeight);
+    }
+    return true;
+  });
+
   return (
-    <>
-      {csvData.length > 0 && (
-        <div className="container-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Nº</th>
-                <th>VID</th>
-                <th>Weight</th>
-              </tr>
-            </thead>
-            <tbody>
-              {csvData.map((row, index) => (
-                <tr key={index}>
-                  <td className="number-td">{index + 1}</td>
-                  <td>{row.VID}</td>
-                  <td>{row.Weight}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </>
+    <div className="container-table">
+      <div className="container-inputs-table">
+        <input
+          className="input-vid"
+          type="number"
+          placeholder="Filtre VID..."
+          value={searchVID}
+          onChange={(e) => setSearchVID(e.target.value)}
+        />
+        <input
+          className="input-weight"
+          type="number"
+          placeholder="Filtre Peso..."
+          value={searchWeight}
+          onChange={(e) => setSearchWeight(e.target.value)}
+        />
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nº</th>
+            <th>VID</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredData.map((row, index) => (
+            <tr key={index}>
+              <td className="number-td">{index + 1}</td>
+              <td>{row.bottom}</td>
+              <td>{row.weight}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

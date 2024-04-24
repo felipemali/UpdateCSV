@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "RedHat Display";
+  src: url(../../../assets/fonts/ArchivoBlack-Regular.ttf);
+}
+.container-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+.container-logo img {
+  margin-right: 1rem;
+}
+.container-logo span {
+  font-family: "RedHat Display";
+  color: #7f5539;
+  font-size: 30px;
+}

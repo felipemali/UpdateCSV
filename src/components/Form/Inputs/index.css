@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "RedBold";
+  src: url(../../../assets/fonts/RedHatDisplay-Bold.ttf);
+}
+
+.container-login {
+  margin: 2rem auto 0 auto;
+  width: 92%;
+  max-width: 1080px;
+}
+
+.container-login .input-text {
+  display: block;
+  width: 97%;
+  font-size: 16px;
+  padding: 9.4px 0 9.4px 8px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #cacaca;
+  border-radius: 4px;
+  outline: 0;
+  transition: 0.2s ease-in-out;
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.container-login .label-login {
+  font-family: "RedBold", sans-serif;
+  display: block;
+  margin: 2rem 0 0.3rem 0;
+  font-size: 13px;
+  color: #4d4c4c;
+}
+.container-login p {
+  margin-top: 0.2rem;
+}
+.container-input-password {
+  width: 97%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid #cacaca;
+  padding: 5px 0 5px 8px;
+  border-radius: 4px;
+}
+
+.container-input-password button {
+  display: flex;
+  align-items: center;
+  all: unset;
+  background-color: transparent;
+  outline: 0;
+  cursor: pointer;
+  border: 0;
+  color: #cacaca;
+  padding: 0;
+  margin: 0.3rem 0 0 0;
+  width: 40px;
+}
+.container-input-password button img {
+  width: 20px;
+  margin: 0 1rem 0 0;
+  padding: 0;
+  height: auto;
+  flex-grow: 1;
+}
+.container-input-password input {
+  width: 80%;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  font-size: 16px;
+  color: #000;
+}
+
+.button-submit {
+  display: block;
+  background-color: #4e3728;
+  color: #fff;
+  border: none;
+  width: 98%;
+  border-radius: 15px;
+  padding: 16px 0;
+  margin: 4rem 0 0 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-container {
+  position: relative;
+  width: 100px;
+  height: 200px;
+}

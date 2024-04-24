@@ -1,4 +1,4 @@
-export type CSVData = {
-  VID: string;
-  Weight: string;
-};
+export type AnimalData = {
+  bottom: string
+  weight: number;
+}
