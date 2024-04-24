@@ -7,7 +7,7 @@ const HeaderLogin = () => {
         <img src={logo} alt="logo" />
       </div>
       <div>
-        <span>AnimalUpdate</span>
+        <span>UpdateCSV</span>
       </div>
     </header>
   );
