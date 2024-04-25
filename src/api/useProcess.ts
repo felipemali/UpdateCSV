@@ -23,13 +23,22 @@ export const useProcess = () => {
       bottom: "30",
       weight: 167,
     },
+    {
+      bottom: "30",
+      weight: 50,
+    },
+    {
+      bottom: "30",
+      weight: 100,
+    },
   ];
 
   //verificando login e buscando token
   const getToken = async (login: dataUser) => {
     try {
+      //http://localhost:8080/sessoes
       //https://api-ebov.fly.dev/sessoes
-      const search = await fetch("http://localhost:8080/sessoes", {
+      const search = await fetch("https://api-ebov.fly.dev/sessoes", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -78,8 +87,9 @@ export const useProcess = () => {
     console.log("caiu");
 
     try {
+      //http://localhost:8080/registros/many
       //https://api-ebov.fly.dev/registros/many
-      const search = await fetch("http://localhost:8080/registros/many", {
+      const search = await fetch("https://api-ebov.fly.dev/registros/many", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -90,6 +100,8 @@ export const useProcess = () => {
       });
 
       if (search.status === 201) {
+        console.log("sucesso");
+
         setMessageResponse({ status: true, message: "Dados atualizados" });
       } else if (search.status === 401) {
         console.log("Erro 401: Não autorizado");

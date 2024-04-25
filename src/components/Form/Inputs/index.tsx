@@ -31,12 +31,8 @@ const Inputs = ({
   setMessageInput,
 }: DataProps) => {
   const { submit, setSubmit } = useContext(UserContext);
-  // const { getToken } = useProcess();
 
   useEffect(() => {
-    // if (message?.status) {
-    //   getToken({ email, password });
-    // }
     if (submit && email === "") {
       setMessage({ status: false, text: "* Campo email vazio" });
     }
