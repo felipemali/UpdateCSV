@@ -1,0 +1,11 @@
+.container-message-response {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 2rem auto 0 auto;
+}
+.message-response img {
+  height: 40px;
+  width: 40px;
+}

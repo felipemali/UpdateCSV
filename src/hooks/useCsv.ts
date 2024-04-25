@@ -1,7 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { AnimalData } from "../models/CSVData";
 import Papa from "papaparse";
-// import { useProcess } from "../api";
 
 export type CSVData = {
   VID: string;
@@ -13,11 +12,9 @@ export const useCsv = () => {
   const [data, setData] = useState<AnimalData[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [sending, setSending] = useState(false);
-  const [spin, setSpin] = useState(false);
 
   const processFile = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event?.target.files ? event.target.files[0] : null;
-    setSpin(true);
 
     if (file) {
       Papa.parse(file, {
@@ -68,11 +65,9 @@ export const useCsv = () => {
     fileName,
     sending,
     fileInputRef,
-    spin,
     setSending,
     setFileName,
     processFile,
     handleSubmit,
-    setSpin,
   };
 };

@@ -1,23 +1,18 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../../context/UserContext";
-// import { useProcess } from "../../../api";
 import "./index.css";
 import eyeClose from "../../../assets/img/hide.png";
 import eyeOpen from "../../../assets/img/view.png";
 
-import { TailSpin } from "react-loader-spinner";
 import { DataProps } from "..";
+import Message from "../Message";
+import EffectLoading from "../../EffectLoading";
+import { useForm } from "react-hook-form";
 
 export type message = {
   status: boolean;
   text: string;
 };
-const p = {
-  color: "red",
-  width: "80%",
-  marginTop: "1rem",
-};
-
 const Inputs = ({
   email,
   setEmail,
@@ -31,6 +26,12 @@ const Inputs = ({
   setMessageInput,
 }: DataProps) => {
   const { submit, setSubmit } = useContext(UserContext);
+
+  const { register, handleSubmit } = useForm();
+
+  const handleSubmitData = (data: unknown) => {
+    console.log(data);
+  };
 
   useEffect(() => {
     if (submit && email === "") {
@@ -46,20 +47,21 @@ const Inputs = ({
     setSubmit(false);
   }, [submit]);
 
-  const chanceMessages = () => {
+  const changeMessages = () => {
     setMessageInput({ status: false, text: "" });
     setMessage({ status: false, text: "" });
   };
 
   return (
     <div className="container-login">
-      <form>
+      <form onSubmit={handleSubmit(handleSubmitData)}>
         <label className="label-login">Email</label>
         <input
+          {...register("email")}
           placeholder="Digite seu email..."
           className="input-text"
           onChange={(e) => setEmail(e.target.value.toLowerCase())}
-          onClick={chanceMessages}
+          onClick={changeMessages}
           type="text"
           value={email}
         />
@@ -67,10 +69,11 @@ const Inputs = ({
         <label className="label-login">Senha</label>
         <div className="container-input-password">
           <input
+            {...register("password")}
             placeholder="Digite sua senha..."
             // className="input-text"
             onChange={(e) => setPassword(e.target.value)}
-            onClick={chanceMessages}
+            onClick={changeMessages}
             type={!isShowPassowrd ? "password" : "text"}
             value={password}
           />
@@ -83,17 +86,11 @@ const Inputs = ({
         </div>
 
         {/* mensagem input */}
-        <p style={p}>{!message?.status && message?.text}</p>
+        <Message message={message} />
         {/* /////mensagem input */}
 
         {/* lógica loading */}
-        {submit && (
-          <div className="overlay">
-            <div className="icon-container">
-              <TailSpin radius={"8px"} color="gray" height={80} width={80} />
-            </div>
-          </div>
-        )}
+        {submit && <EffectLoading />}
         {/* ///////////lógica loading */}
         <input
           onClick={() => {

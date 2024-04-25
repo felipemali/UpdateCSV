@@ -1,9 +1,31 @@
 .container-table {
   max-width: 900px;
   margin: auto;
+  height: 350px;
+  overflow-y: auto;
 }
 .container-table table {
   margin: 0 auto;
+  border-collapse: collapse;
+  width: 90%;
+}
+.first-th {
+  border: transparent;
+}
+
+th,
+td {
+  border: 1px solid #5a5959;
+  padding: 8px;
+  text-align: left;
+  color: #242424;
+}
+td {
+  width: 50%;
+}
+.number-td {
+  width: 5%;
+  text-align: center;
 }
 .container-table .input-vid,
 .input-weight {

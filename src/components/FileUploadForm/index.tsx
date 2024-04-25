@@ -1,13 +1,14 @@
 import "./index.css";
 import IconSum from "../../assets/img/icon-sum.png";
 import IconUpload from "../../assets/img/icon-upload.png";
+
 import Table from "../../components/Table";
+import MessageResponse from "../MessageResponse";
+import EffectLoading from "../EffectLoading";
+
 import { useCsv } from "../../hooks";
-import { TailSpin } from "react-loader-spinner";
 import { useProcess } from "../../api";
-import iconSucess from "../../assets/img/icon-success.svg";
-import iconError from "../../assets/img/icon-error.svg";
-import { useEffect } from "react";
+import FileName from "../FileName";
 
 const FileUploadForm = () => {
   const {
@@ -19,19 +20,13 @@ const FileUploadForm = () => {
     sending,
     fileInputRef,
     handleSubmit,
-    spin,
-    setSpin,
   } = useCsv();
 
-  const { postData, isSend, messageResponse, setMessageResponse, setSend } =
+  const { postData, isSend, messageResponse, setMessageResponse, setIsSend } =
     useProcess();
 
-  useEffect(() => {
-    setSpin(false);
-  }, [hasRows]);
-
   return (
-    <main className="container">
+    <main className="container-file-updade">
       <div className="container-input-file">
         <label
           htmlFor="file-upload"
@@ -54,7 +49,7 @@ const FileUploadForm = () => {
           onClick={() => {
             setFileName(""),
               handleSubmit(),
-              hasRows ? setSend(true) : setSend(isSend);
+              hasRows ? setIsSend(true) : setIsSend(isSend);
             postData(data);
           }}
         >
@@ -63,35 +58,14 @@ const FileUploadForm = () => {
         </button>
       </div>
 
-      {isSend && (
-        <div className="loading">
-          <TailSpin radius={"8px"} color="gray" height={80} width={80} />
-        </div>
-      )}
+      {isSend && <EffectLoading />}
+
       {!isSend && messageResponse.message !== "" && (
-        <div className="container-message-response">
-          <span
-            style={{ color: messageResponse.status ? "green" : "red" }}
-            className="message-response"
-          >
-            {messageResponse.message}
-          </span>
-          <img
-            src={messageResponse.status ? iconSucess : iconError}
-            alt="sucess"
-          />
-        </div>
+        <MessageResponse messageResponse={messageResponse} />
       )}
 
-      {spin && (
-        <div className="overlay">
-          <div className="icon-container">
-            <TailSpin radius={"8px"} color="gray" height={80} width={80} />
-          </div>
-        </div>
-      )}
+      <FileName fileName={fileName} />
 
-      <span>{fileName}</span>
       {hasRows && <Table data={data} />}
     </main>
   );

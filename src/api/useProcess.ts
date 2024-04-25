@@ -16,20 +16,12 @@ export const useProcess = () => {
     status: false,
     text: "",
   });
-  const [isSend, setSend] = useState(false);
+  const [isSend, setIsSend] = useState(false);
 
   const dataa = [
     {
       bottom: "30",
-      weight: 167,
-    },
-    {
-      bottom: "30",
-      weight: 50,
-    },
-    {
-      bottom: "30",
-      weight: 100,
+      weight: 207,
     },
   ];
 
@@ -118,14 +110,14 @@ export const useProcess = () => {
       });
     }
 
-    setSend(false);
+    setIsSend(false);
   };
 
   return {
     getToken,
     postData,
     isSend,
-    setSend,
+    setIsSend,
     messageResponse,
     messageInput,
     setMessageResponse,
