@@ -8,18 +8,22 @@ type userContextType = {
   login: dataUser;
   token: string;
   submit: boolean;
+  isvalidated: boolean;
   setLogin: (value: dataUser) => void;
   setSubmit: (value: boolean) => void;
   setToken: (value: string) => void;
+  setIsvalidated: (value: boolean) => void;
 };
 
 const initialValue: userContextType = {
   login: { email: "", password: "" },
   submit: false,
+  isvalidated: false,
   token: "",
   setLogin: () => {},
   setToken: () => {},
   setSubmit: () => {},
+  setIsvalidated: () => {},
 };
 
 export const UserContext = createContext<userContextType>(initialValue);
@@ -35,6 +39,7 @@ export const UserContextProvider = ({ children }: Props) => {
     password: "",
   });
   const [submit, setSubmit] = useState(false);
+  const [isvalidated, setIsvalidated] = useState(false);
   const [token, setToken] = useState("");
 
   return (
@@ -43,6 +48,8 @@ export const UserContextProvider = ({ children }: Props) => {
         login,
         submit,
         token,
+        isvalidated,
+        setIsvalidated,
         setLogin,
         setSubmit,
         setToken,

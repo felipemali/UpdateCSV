@@ -1,8 +1,8 @@
-import { messageData } from "..";
+// import { messageData } from "..";
 import "./index.css";
 
-const Message = ({ message }: { message: messageData }) => (
-  <p className="message">{!message?.status && message?.text}</p>
+const Message = ({ error }: { error: string | undefined }) => (
+  <p className="message">{error}</p>
 );
 
 export default Message;

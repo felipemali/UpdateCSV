@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { UserContext } from "../../../context/UserContext";
+import { useEffect, useState } from "react";
+import { dataUser } from "../../../context/UserContext";
 import "./index.css";
 import eyeClose from "../../../assets/img/hide.png";
 import eyeOpen from "../../../assets/img/view.png";
@@ -9,47 +9,53 @@ import Message from "../Message";
 import EffectLoading from "../../EffectLoading";
 import { useForm } from "react-hook-form";
 
-export type message = {
-  status: boolean;
-  text: string;
-};
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useProcess } from "../../../api";
+import FileName from "../../FileName";
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email("Digite um email válido")
+    .required("* Email obrigatório"),
+  password: Yup.string().required("* Senha obrigatória"),
+});
+
 const Inputs = ({
   email,
   setEmail,
   password,
   setPassword,
-  message,
-  setMessage,
   isShowPassowrd,
-  emailValidation,
   handlePassword,
-  setMessageInput,
 }: DataProps) => {
-  const { submit, setSubmit } = useContext(UserContext);
+  const { getToken } = useProcess();
+  const [isFormSubmitting, setIsFormSubmitting] = useState(false);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm({
+    mode: "all",
+    resolver: yupResolver(schema),
+  });
+  const { errors } = formState;
 
-  const handleSubmitData = (data: unknown) => {
-    console.log(data);
-  };
+  console.log("errors", errors);
 
   useEffect(() => {
-    if (submit && email === "") {
-      setMessage({ status: false, text: "* Campo email vazio" });
+    if (isFormSubmitting && Object.keys(errors).length === 0) {
+      getToken({ email, password });
+      setIsFormSubmitting(false);
     }
-    if (message?.status && password === "") {
-      setMessage({ status: false, text: "* Campo senha vazio" });
-    }
-    if (submit && email === "" && password === "") {
-      setMessage({ status: false, text: "* Preencha os campos acima" });
-    }
+  }, [isFormSubmitting, errors]);
 
-    setSubmit(false);
-  }, [submit]);
-
-  const changeMessages = () => {
-    setMessageInput({ status: false, text: "" });
-    setMessage({ status: false, text: "" });
+  const handleSubmitData = async (data: dataUser) => {
+    console.log("email, senha", data);
+    try {
+      await schema.validate(data);
+      setIsFormSubmitting(true);
+      console.log("Email válido");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -61,10 +67,10 @@ const Inputs = ({
           placeholder="Digite seu email..."
           className="input-text"
           onChange={(e) => setEmail(e.target.value.toLowerCase())}
-          onClick={changeMessages}
           type="text"
           value={email}
         />
+        <Message error={errors.email?.message} />
 
         <label className="label-login">Senha</label>
         <div className="container-input-password">
@@ -73,7 +79,6 @@ const Inputs = ({
             placeholder="Digite sua senha..."
             // className="input-text"
             onChange={(e) => setPassword(e.target.value)}
-            onClick={changeMessages}
             type={!isShowPassowrd ? "password" : "text"}
             value={password}
           />
@@ -84,23 +89,16 @@ const Inputs = ({
             />
           </button>
         </div>
-
-        {/* mensagem input */}
-        <Message message={message} />
-        {/* /////mensagem input */}
+        <Message error={errors.password?.message} />
 
         {/* lógica loading */}
-        {submit && <EffectLoading />}
+        {isFormSubmitting && <EffectLoading />}
         {/* ///////////lógica loading */}
-        <input
-          onClick={() => {
-            emailValidation();
-            setSubmit(!submit);
-          }}
-          className="button-submit"
-          type="button"
-          value="Entrar"
-        />
+        <input className="button-submit" type="submit" value="Entrar" />
+        <div className="container-msg-create-account">
+          <FileName fileName="É necessário uma conta e-Bov, não tem?" />
+          <a href="https://beta-e-bov.web.app/cadastro">Cadastra-se aqui</a>
+        </div>
       </form>
     </div>
   );

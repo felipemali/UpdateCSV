@@ -1,32 +1,31 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext, dataUser } from "../context/UserContext";
-import { message } from "../components/Form/Inputs";
 import { AnimalData } from "../models/CSVData";
 
 export const useProcess = () => {
-  const { token, setSubmit, setToken } = useContext(UserContext);
+  const { token, setSubmit, setToken, setIsvalidated } =
+    useContext(UserContext);
 
   const navigate = useNavigate();
   const [messageResponse, setMessageResponse] = useState({
     status: false,
     message: "",
   });
-  const [messageInput, setMessageInput] = useState<message>({
-    status: false,
-    text: "",
-  });
+
   const [isSend, setIsSend] = useState(false);
 
   const dataa = [
     {
       bottom: "30",
-      weight: 207,
+      weight: 350,
     },
   ];
 
   //verificando login e buscando token
   const getToken = async (login: dataUser) => {
+    console.log("caiu gettoken");
+
     try {
       //http://localhost:8080/sessoes
       //https://api-ebov.fly.dev/sessoes
@@ -47,19 +46,22 @@ export const useProcess = () => {
         navigate("/home");
         saveToken(content.token);
       } else if (search.status === 401) {
-        console.log("Erro 401: Não autorizado");
-        setMessageInput({ status: false, text: "email ou senha inválidos" });
+        console.log("erro 401");
+        setIsvalidated(true);
+
+        setTimeout(() => {
+          setIsvalidated(false);
+        }, 4000);
       } else {
         console.log(`Erro ${search.status}: ${search.statusText}`);
-        setMessageInput({ status: false, text: "email ou senha inválidos" });
+        setIsvalidated(true);
+        setTimeout(() => {
+          setIsvalidated(false);
+        }, 4000);
       }
     } catch (error) {
       //erro durante solicitação
       console.error("Erro ao processar a solicitação:", error);
-      setMessageInput({
-        status: false,
-        text: `Erro ao processar a solicitação`,
-      });
     }
 
     setSubmit(false);
@@ -117,10 +119,10 @@ export const useProcess = () => {
     getToken,
     postData,
     isSend,
+    setIsvalidated,
     setIsSend,
     messageResponse,
-    messageInput,
+
     setMessageResponse,
-    setMessageInput,
   };
 };

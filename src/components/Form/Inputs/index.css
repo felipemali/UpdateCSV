@@ -106,3 +106,25 @@
   width: 100px;
   height: 200px;
 }
+.container-msg-create-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 97%;
+}
+.container-msg-create-account a {
+  font-family: "RedBold", sans-serif;
+  text-decoration: none;
+  color: #4e3728;
+  font-size: 1.1rem;
+  padding-left: 0.5rem;
+}
+.container-msg-create-account a:hover {
+  color: #996d50;
+}
+@media screen and (max-width: 768px) {
+  .container-msg-create-account {
+    flex-direction: column;
+  }
+}
