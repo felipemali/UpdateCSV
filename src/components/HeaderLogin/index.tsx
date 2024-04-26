@@ -1,4 +1,4 @@
-import logo from "../../../assets/img/logo-login.png";
+import logo from "../../assets/img/logo-login.png";
 import "./index.css";
 const HeaderLogin = () => {
   return (

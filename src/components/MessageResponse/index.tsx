@@ -14,7 +14,10 @@ const MessageResponse = ({
   return (
     <div className="container-message-response">
       <span
-        style={{ color: messageResponse.status ? "green" : "red" }}
+        style={{
+          color: messageResponse.status ? "green" : "red",
+          fontSize: "20px",
+        }}
         className="message-response"
       >
         {messageResponse.message}

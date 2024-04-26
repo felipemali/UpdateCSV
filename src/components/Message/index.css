@@ -1,5 +1,8 @@
+:root {
+  --red: red;
+}
 .message {
-  color: red;
+  color: var(--red);
   width: 80%;
   margin-top: 1rem;
 }

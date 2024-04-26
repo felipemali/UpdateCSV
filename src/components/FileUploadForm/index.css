@@ -1,3 +1,7 @@
+:root {
+  --white: #fff;
+  --dark-brown: #7f5539;
+}
 .container-file-updade {
   width: 100vw;
   margin-top: 8rem;
@@ -16,10 +20,10 @@ input[type="file"] {
   width: 160px;
   padding: 10px 0;
   height: 32px;
-  background-color: #7f5539;
+  background-color: var(--dark-brown);
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: var(--white);
   border-radius: 16px;
   border: 0;
   cursor: pointer;
@@ -38,7 +42,7 @@ input[type="file"] {
   height: 32px;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: var(--white);
   border-radius: 16px;
   border: 0;
   cursor: pointer;

@@ -18,14 +18,12 @@ export const useProcess = () => {
   const dataa = [
     {
       bottom: "30",
-      weight: 350,
+      weight: 155,
     },
   ];
 
   //verificando login e buscando token
   const getToken = async (login: dataUser) => {
-    console.log("caiu gettoken");
-
     try {
       //http://localhost:8080/sessoes
       //https://api-ebov.fly.dev/sessoes
@@ -78,7 +76,7 @@ export const useProcess = () => {
     setMessageResponse({ status: false, message: "" });
     console.log("aaaaaa", data);
     console.log(token);
-    console.log("caiu");
+    // console.log("caiu");
 
     try {
       //http://localhost:8080/registros/many

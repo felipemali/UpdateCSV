@@ -1,3 +1,10 @@
+:root {
+  --medium-gray: #5a5959;
+  --dark-gray: #242424;
+  --white: #fff;
+  --black: #000;
+  --light-gray: #cacaca;
+}
 .container-table {
   max-width: 900px;
   margin: auto;
@@ -15,10 +22,10 @@
 
 th,
 td {
-  border: 1px solid #5a5959;
+  border: 1px solid var(--medium-gray);
   padding: 8px;
   text-align: left;
-  color: #242424;
+  color: var(--dark-gray);
 }
 td {
   width: 50%;
@@ -32,9 +39,9 @@ td {
   width: 15%;
   font-size: 16px;
   padding: 9.4px 0 9.4px 8px;
-  color: #000;
-  background-color: #fff;
-  border: 1px solid #cacaca;
+  color: var(--black);
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
   border-radius: 4px;
   outline: 0;
   transition: 0.2s ease-in-out;

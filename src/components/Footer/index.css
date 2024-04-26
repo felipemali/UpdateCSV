@@ -1,5 +1,10 @@
+:root {
+  --light-gray: #f1f1f1;
+  --medium-gray: #777;
+  --dark-gray: #4e4e4e;
+}
 footer {
-  background-color: #f1f1f1;
+  background-color: var(--light-gray);
   position: absolute;
   left: 0;
   bottom: 0;
@@ -12,8 +17,8 @@ footer {
 footer p {
   margin: 0;
   padding: 0;
-  color: #777;
+  color: var(--medium-gray);
   font-size: 14px;
   text-decoration: none;
-  color: #4e4e4e;
+  color: var(--dark-gray);
 }

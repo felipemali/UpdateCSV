@@ -2,15 +2,19 @@
   font-family: "RedHat";
   src: url(../../assets/fonts/RedHatDisplay-BlackItalic.ttf);
 }
-
+:root {
+  --white: #fff;
+  --light-grayy: #eee;
+  --medium-gray: #5a5858;
+}
 .header {
   align-items: center;
   height: 60px;
   width: 95%;
   max-width: 2000px;
   padding: 0;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--light-grayy);
   margin: auto;
 }
 .header div {
@@ -38,7 +42,7 @@
   align-items: center;
   justify-content: space-evenly;
   font-size: 20px;
-  color: #5a5858;
+  color: var(--medium-gray);
 }
 .header button img {
   width: 24px;

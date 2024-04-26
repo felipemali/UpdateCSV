@@ -2,6 +2,17 @@
   font-family: "RedBold";
   src: url(../../../assets/fonts/RedHatDisplay-Bold.ttf);
 }
+:root {
+  --white: #fff;
+  --black: #000;
+  --black-low-opacity: #0000004d;
+  --light-gray: #cacaca;
+  --dark-gray: #4d4c4c;
+  --dark-brown: #4e3728;
+  --dark-gray: #242424;
+  --grayish-brown: #996d50;
+  --container-width: 97%;
+}
 
 .container-login {
   margin: 2rem auto 0 auto;
@@ -11,12 +22,12 @@
 
 .container-login .input-text {
   display: block;
-  width: 97%;
+  width: var(--container-width);
   font-size: 16px;
   padding: 9.4px 0 9.4px 8px;
   color: #000;
-  background-color: #fff;
-  border: 1px solid #cacaca;
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
   border-radius: 4px;
   outline: 0;
   transition: 0.2s ease-in-out;
@@ -32,18 +43,18 @@
   display: block;
   margin: 2rem 0 0.3rem 0;
   font-size: 13px;
-  color: #4d4c4c;
+  color: var(--dark-gray);
 }
 .container-login p {
   margin-top: 0.2rem;
 }
 .container-input-password {
-  width: 97%;
+  width: var(--container-width);
   display: flex;
   justify-content: space-between;
   gap: 8px;
   align-items: center;
-  border: 1px solid #cacaca;
+  border: 1px solid var(--light-gray);
   padding: 5px 0 5px 8px;
   border-radius: 4px;
 }
@@ -56,7 +67,7 @@
   outline: 0;
   cursor: pointer;
   border: 0;
-  color: #cacaca;
+  color: var(--light-gray);
   padding: 0;
   margin: 0.3rem 0 0 0;
   width: 40px;
@@ -74,13 +85,13 @@
   outline: 0;
   border: 0;
   font-size: 16px;
-  color: #000;
+  color: var(--black);
 }
 
 .button-submit {
   display: block;
-  background-color: #4e3728;
-  color: #fff;
+  background-color: var(--dark-brown);
+  color: var(--white);
   border: none;
   width: 98%;
   border-radius: 15px;
@@ -96,7 +107,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--black-low-opacity);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,17 +122,21 @@
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
-  width: 97%;
+  width: var(--container-width);
+}
+.container-msg-create-account span {
+  font-size: 1.1rem;
+  color: var(--dark-gray);
 }
 .container-msg-create-account a {
   font-family: "RedBold", sans-serif;
   text-decoration: none;
-  color: #4e3728;
+  color: var(--dark-brown);
   font-size: 1.1rem;
   padding-left: 0.5rem;
 }
 .container-msg-create-account a:hover {
-  color: #996d50;
+  color: var(--grayish-brown);
 }
 @media screen and (max-width: 768px) {
   .container-msg-create-account {

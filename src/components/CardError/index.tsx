@@ -1,9 +1,9 @@
 import "./index.css";
-import iconError from "../../../assets/img/icon-error2.png";
+import iconError from "../../assets/img/icon-error2.png";
 
 const CardError = () => {
   return (
-    <div className="card">
+    <div className="card-error">
       <div className="container-img">
         <img src={iconError} alt="" />
       </div>
