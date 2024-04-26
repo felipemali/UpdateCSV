@@ -4,8 +4,7 @@ import { UserContext, dataUser } from "../context/UserContext";
 import { AnimalData } from "../models/CSVData";
 
 export const useProcess = () => {
-  const { token, setSubmit, setToken, setIsvalidated } =
-    useContext(UserContext);
+  const { token, setToken, setIsvalidated } = useContext(UserContext);
 
   const navigate = useNavigate();
   const [messageResponse, setMessageResponse] = useState({
@@ -15,12 +14,12 @@ export const useProcess = () => {
 
   const [isSend, setIsSend] = useState(false);
 
-  const dataa = [
-    {
-      bottom: "30",
-      weight: 155,
-    },
-  ];
+  // const dataa = [
+  //   {
+  //     bottom: "30",
+  //     weight: 155,
+  //   },
+  // ];
 
   //verificando login e buscando token
   const getToken = async (login: dataUser) => {
@@ -61,8 +60,6 @@ export const useProcess = () => {
       //erro durante solicitação
       console.error("Erro ao processar a solicitação:", error);
     }
-
-    setSubmit(false);
   };
 
   //salvar token na session
@@ -74,7 +71,7 @@ export const useProcess = () => {
   //Envio dos dados
   const postData = async (data: AnimalData[]) => {
     setMessageResponse({ status: false, message: "" });
-    console.log("aaaaaa", data);
+    console.log("dados:", data);
     console.log(token);
     // console.log("caiu");
 
@@ -88,7 +85,7 @@ export const useProcess = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(dataa),
+        body: JSON.stringify(data),
       });
 
       if (search.status === 201) {

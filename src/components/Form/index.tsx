@@ -4,7 +4,6 @@ import "./index.css";
 import eyeClose from "../../assets/img/hide.png";
 import eyeOpen from "../../assets/img/view.png";
 
-import { DataProps } from "../../page/Login";
 import Message from "../Message";
 import EffectLoading from "../EffectLoading";
 import { useForm } from "react-hook-form";
@@ -13,16 +12,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useProcess } from "../../api";
 import { schema } from "./schemaYup";
 
-const Form = ({
-  email,
-  setEmail,
-  password,
-  setPassword,
-  isShowPassowrd,
-  handlePassword,
-}: DataProps) => {
+const Form = () => {
   const { getToken } = useProcess();
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+  const [login, setLogin] = useState({ email: "", password: "" });
+  const [isShowPassowrd, setIsShowPassowrd] = useState(false);
 
   const { register, handleSubmit, formState } = useForm({
     mode: "all",
@@ -34,16 +28,18 @@ const Form = ({
 
   useEffect(() => {
     if (isFormSubmitting && Object.keys(errors).length === 0) {
-      getToken({ email, password });
+      getToken(login);
       setIsFormSubmitting(false);
     }
   }, [isFormSubmitting, errors]);
+  const handlePassword = () => setIsShowPassowrd(!isShowPassowrd);
 
   const handleSubmitData = async (data: dataUser) => {
-    // console.log("email, senha", data);
     try {
       await schema.validate(data);
+      setLogin(data);
       setIsFormSubmitting(true);
+
       console.log("Email válido");
     } catch (error) {
       // console.error(error);
@@ -58,9 +54,7 @@ const Form = ({
           {...register("email")}
           placeholder="Digite seu email..."
           className="input-text"
-          onChange={(e) => setEmail(e.target.value.toLowerCase())}
           type="text"
-          value={email}
         />
         <Message error={errors.email?.message} />
 
@@ -70,9 +64,8 @@ const Form = ({
             {...register("password")}
             placeholder="Digite sua senha..."
             // className="input-text"
-            onChange={(e) => setPassword(e.target.value)}
+
             type={!isShowPassowrd ? "password" : "text"}
-            value={password}
           />
           <button onClick={handlePassword} type="button">
             <img
@@ -86,6 +79,7 @@ const Form = ({
         {/* lógica loading */}
         {isFormSubmitting && <EffectLoading />}
         {/* ///////////lógica loading */}
+
         <input className="button-submit" type="submit" value="Entrar" />
         <div className="container-msg-create-account">
           <span> É necessário uma conta e-Bov, não tem?</span>
