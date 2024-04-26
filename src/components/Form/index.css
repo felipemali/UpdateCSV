@@ -125,7 +125,7 @@
   width: var(--container-width);
 }
 .container-msg-create-account span {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--dark-gray);
 }
 .container-msg-create-account a {
