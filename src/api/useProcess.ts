@@ -71,7 +71,7 @@ export const useProcess = () => {
   //Envio dos dados
   const postData = async (data: AnimalData[]) => {
     setMessageResponse({ status: false, message: "" });
-    // console.log("dados:", data);
+    console.log("dados:", data);
     // console.log(token);
     // console.log("caiu");
 
@@ -85,7 +85,7 @@ export const useProcess = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(dataa),
       });
 
       if (search.status === 201) {
