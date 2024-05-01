@@ -1,5 +1,6 @@
 import "./index.css";
 import IconSum from "../../assets/img/icon-sum.png";
+import ArrowDown from "../../assets/img/arrow-down.png";
 import IconUpload from "../../assets/img/icon-upload.png";
 
 import Table from "../../components/Table";
@@ -27,6 +28,10 @@ const FileUploadForm = () => {
 
   return (
     <main className="container-file-updade">
+      <div className="container-title-home">
+        <h4>Atualize seus registros e-Bov aqui</h4>
+        <img src={ArrowDown} alt="seta para baixo" />
+      </div>
       <div className="container-input-file">
         <label
           htmlFor="file-upload"

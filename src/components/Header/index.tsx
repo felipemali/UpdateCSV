@@ -10,7 +10,7 @@ const Header = () => {
         <Link to="/" className="link-no-underline">
           <button>
             <img src={arrow} alt="icone seta" />
-            Login
+            Sair
           </button>
         </Link>
 

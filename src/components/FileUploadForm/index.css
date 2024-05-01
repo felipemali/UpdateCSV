@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "HatDisplay";
+  src: url(../../assets/fonts/RedHatDisplay-Bold.ttf);
+}
+@font-face {
+  font-family: "HatLight";
+  src: url(../../assets/fonts/RedHatDisplay-Light.ttf);
+}
 :root {
   --white: #fff;
   --dark-brown: #7f5539;
@@ -58,4 +66,22 @@ input[type="file"] {
 .loading {
   width: 100px;
   margin: 2rem auto 0 auto;
+}
+.container-title-home {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin: 0 auto 3rem auto;
+}
+.container-title-home h4 {
+  text-align: center;
+  font-family: "HatLight";
+  font-size: 1.1rem;
+  color: #242424;
+}
+.container-title-home img {
+  margin-left: 0.5rem;
+  width: 24px;
 }

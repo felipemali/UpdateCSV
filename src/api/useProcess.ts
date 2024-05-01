@@ -14,12 +14,12 @@ export const useProcess = () => {
 
   const [isSend, setIsSend] = useState(false);
 
-  // const dataa = [
-  //   {
-  //     bottom: "30",
-  //     weight: 155,
-  //   },
-  // ];
+  const dataa = [
+    {
+      bottom: "30",
+      weight: 400,
+    },
+  ];
 
   //verificando login e buscando token
   const getToken = async (login: dataUser) => {
@@ -71,8 +71,8 @@ export const useProcess = () => {
   //Envio dos dados
   const postData = async (data: AnimalData[]) => {
     setMessageResponse({ status: false, message: "" });
-    console.log("dados:", data);
-    console.log(token);
+    // console.log("dados:", data);
+    // console.log(token);
     // console.log("caiu");
 
     try {
@@ -93,11 +93,17 @@ export const useProcess = () => {
 
         setMessageResponse({ status: true, message: "Dados atualizados" });
       } else if (search.status === 401) {
-        console.log("Erro 401: Não autorizado");
-        setMessageResponse({ status: false, message: "Não autorizado" });
+        console.log("Erro 401: Envio de registros não autorizado");
+        setMessageResponse({
+          status: false,
+          message: "Envio de registros não autorizado",
+        });
       } else {
         console.log(`Erro ${search.status}: ${search.statusText}`);
-        setMessageResponse({ status: false, message: "Não autorizado" });
+        setMessageResponse({
+          status: false,
+          message: "Envio de registros não autorizado",
+        });
       }
     } catch (error) {
       console.error("Erro ao processar a solicitação:", error);
