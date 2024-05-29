@@ -5,6 +5,7 @@ import Papa from "papaparse";
 export type CSVData = {
   VID: string;
   Weight: string;
+  Nome?: string;
 };
 
 export const useCsv = () => {
@@ -50,6 +51,8 @@ export const useCsv = () => {
     }
   };
   const handleSubmit = () => {
+    console.log("caiu");
+
     if (sending) {
       return;
     }
@@ -69,5 +72,6 @@ export const useCsv = () => {
     setFileName,
     processFile,
     handleSubmit,
+    setData,
   };
 };

@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "HatDisplay";
+  src: url(../../assets/fonts/RedHatDisplay-Bold.ttf);
+}
+@font-face {
+  font-family: "HatLight";
+  src: url(../../assets/fonts/RedHatDisplay-Light.ttf);
+}
+:root {
+  --white: #fff;
+  --light-gray: #eee;
+  --black-opacity: rgba(0, 0, 0, 0.102);
+}
+.card-farm {
+  display: flex;
+  margin: 2rem auto 0 auto;
+  width: 80%;
+  height: 90px;
+  border-radius: 20px;
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
+  box-shadow: 0 4px 8px 8px var(--black-opacity);
+}
+
+.name-farm {
+  display: flex;
+  align-items: center;
+}
+
+.name-farm span {
+  padding: 0;
+}
+.name-farm :first-child {
+  margin: 0 0 0 1rem;
+  font-family: "HatDisplay";
+  font-size: 25px;
+}
+
+.container-checkbox {
+  display: flex;
+  margin-left: 1rem;
+  align-items: center;
+}
+.container-checkbox input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+input[type="checkbox"]:checked {
+  background-color: #7f5539;
+  border-color: #7f5539;
+}
+
+@media screen and (min-width: 600px) {
+  .card-farm {
+    width: 500px;
+  }
+}

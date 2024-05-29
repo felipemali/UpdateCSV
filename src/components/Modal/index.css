@@ -1,0 +1,116 @@
+:root {
+  --vs-primary: 29 92 255;
+  --white: #fff;
+  --black: #000;
+  --black-low-opacity: #0000004d;
+  --light-gray: #080606;
+  --dark-gray: #ad1a1a;
+  --dark-brown: #4e3728;
+  --dark-gray: #242424;
+  --grayish-brown: #996d50;
+  --container-width: 97%;
+}
+
+dialog {
+  margin: 50% auto 0 auto;
+  padding: 1rem 3rem;
+  background: white;
+  width: 60%;
+  max-width: 400px;
+  padding-top: 2rem;
+  border-radius: 20px;
+  border: 0;
+  box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+
+  &::backdrop {
+    animation: fadeIn 1s ease both;
+    background: rgba(121, 119, 119, 0.4);
+    z-index: 2;
+    backdrop-filter: blur(20px);
+  }
+  .x {
+    filter: grayscale(1);
+    border: none;
+    background: none;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: ease filter, transform 0.3s;
+    cursor: pointer;
+    transform-origin: center;
+    &:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.3rem;
+    padding: 0.5rem 0;
+    a {
+      &:visited {
+        color: rgb(var(--vs-primary));
+      }
+    }
+  }
+}
+.input-text {
+  display: block;
+  width: var(--container-width);
+  font-size: 16px;
+  padding: 9.4px 0 9.4px 8px;
+  color: #000;
+  background-color: var(--white);
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  outline: 0;
+  margin-top: 0.5rem;
+  transition: 0.2s ease-in-out;
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+.container-button-modal {
+  display: flex;
+  justify-content: center;
+}
+.container-button-modal img {
+  height: 20px;
+  width: auto;
+  margin-right: 0.5rem;
+}
+.container-button-modal button {
+  padding: 25px 35px;
+  margin-top: 1rem;
+  height: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  border-radius: 16px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+}
+.container-button-modal button:focus {
+  outline: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -11,12 +11,14 @@ const MessageResponse = ({
 }: {
   messageResponse: MessageResponseType;
 }) => {
+  console.log(messageResponse);
+
   return (
     <div className="container-message-response">
       <span
         style={{
           color: messageResponse.status ? "green" : "red",
-          fontSize: "20px",
+          fontSize: "19px",
           textAlign: "center",
         }}
         className="message-response"

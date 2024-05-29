@@ -4,10 +4,37 @@ import FileUploadForm from "../../components/FileUploadForm";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
+import Modal from "../../components/Modal";
+import { useCsv } from "../../hooks";
 
 const Home = () => {
-  const { setToken } = useContext(UserContext);
+  const {
+    setToken,
+    setIsOpen,
+    isSend,
+    messageResponse,
+    setMessageResponse,
+    setIsSend,
+  } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const {
+    data,
+    hasRows,
+    fileName,
+    processFile,
+    sending,
+    fileInputRef,
+    handleSubmit,
+    setFileName,
+  } = useCsv();
+
+  const clearData = () => {
+    console.log("caiu no clearData");
+    setFileName("");
+    handleSubmit();
+    hasRows ? setIsSend(true) : setIsSend(isSend);
+  };
 
   // verificando token
   useEffect(() => {
@@ -22,7 +49,19 @@ const Home = () => {
   return (
     <>
       <Header />
-      <FileUploadForm />
+      <FileUploadForm
+        data={data}
+        hasRows={hasRows}
+        fileName={fileName}
+        processFile={processFile}
+        sending={sending}
+        fileInputRef={fileInputRef}
+        isSend={isSend}
+        messageResponse={messageResponse}
+        setMessageResponse={setMessageResponse}
+        setIsOpen={setIsOpen}
+      />
+      <Modal data={data} clearData={clearData} />
       <Footer />
     </>
   );

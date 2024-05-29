@@ -1,4 +1,6 @@
 export type AnimalData = {
-  bottom: string
+  bottom: string;
   weight: number;
-}
+  name?: string;
+  label?: string;
+};

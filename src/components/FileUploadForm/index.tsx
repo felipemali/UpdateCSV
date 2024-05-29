@@ -1,30 +1,26 @@
 import "./index.css";
 import IconSum from "../../assets/img/icon-sum.png";
 import ArrowDown from "../../assets/img/arrow-down.png";
-import IconUpload from "../../assets/img/icon-upload.png";
-
 import Table from "../../components/Table";
 import MessageResponse from "../MessageResponse";
 import EffectLoading from "../EffectLoading";
-
-import { useCsv } from "../../hooks";
-import { useProcess } from "../../api";
 import FileName from "../FileName";
 
-const FileUploadForm = () => {
-  const {
-    data,
-    hasRows,
-    fileName,
-    processFile,
-    setFileName,
-    sending,
-    fileInputRef,
-    handleSubmit,
-  } = useCsv();
-
-  const { postData, isSend, messageResponse, setMessageResponse, setIsSend } =
-    useProcess();
+const FileUploadForm = ({
+  data,
+  hasRows,
+  fileName,
+  processFile,
+  sending,
+  fileInputRef,
+  isSend,
+  messageResponse,
+  setMessageResponse,
+  setIsOpen,
+}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+any) => {
+  // console.log(isSend);
+  // console.log(messageResponse);
 
   return (
     <main className="container-file-updade">
@@ -51,15 +47,9 @@ const FileUploadForm = () => {
         <button
           disabled={!hasRows || sending}
           style={{ backgroundColor: hasRows ? "#36d436" : "#CCCCCC" }}
-          onClick={() => {
-            setFileName(""),
-              handleSubmit(),
-              hasRows ? setIsSend(true) : setIsSend(isSend);
-            postData(data);
-          }}
+          onClick={() => setIsOpen(true)}
         >
-          <img src={IconUpload} alt="enviar" />
-          Enviar
+          Continuar
         </button>
       </div>
 
