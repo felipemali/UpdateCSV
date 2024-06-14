@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "RedHat";
+  src: url(../../assets/fonts/RedHatDisplay-BlackItalic.ttf);
+}
+:root {
+  --white: #fff;
+  --light-grayy: #eee;
+  --medium-gray: #5a5858;
+}
+.header {
+  align-items: center;
+  height: 60px;
+  width: 95%;
+  max-width: 2000px;
+  padding: 0;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--light-grayy);
+  margin: auto;
+}
+.header div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.header > img {
+  height: 20px;
+  width: auto;
+}
+.header button {
+  font-family: sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  width: 120px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+  color: var(--medium-gray);
+}
+.header button img {
+  width: 24px;
+}
+.link-no-underline {
+  text-decoration: none;
+}

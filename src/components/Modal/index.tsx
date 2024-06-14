@@ -19,10 +19,6 @@ const Modal = ({
 
   const { postCSV } = useProcess();
 
-  //   console.log(data);
-  //   console.log(items);
-  console.log(input);
-
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

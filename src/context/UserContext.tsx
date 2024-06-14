@@ -6,7 +6,7 @@ import {
   SetStateAction,
 } from "react";
 
-type message = {
+export type message = {
   status: boolean;
   message: string;
 };
@@ -84,6 +84,7 @@ export const UserContextProvider = ({ children }: Props) => {
     status: false,
     message: "",
   });
+  console.log(properties);
 
   const [isSend, setIsSend] = useState(false);
 

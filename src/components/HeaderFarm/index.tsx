@@ -3,21 +3,17 @@ import Logo from "../../assets/img/logoo.svg";
 import Logoo from "../../assets/img/logo-login.png";
 import arrow from "../../assets/img/arrow.png";
 import "./index.css";
-import { message } from "../../context/UserContext";
-const Header = ({
-  setMessageResponse,
-}: {
-  setMessageResponse: (value: message) => void;
-}) => {
+const HeaderFarm = () => {
+  const clearSession = () => {
+    sessionStorage.setItem("userToken", "");
+  };
   return (
     <header className="header">
       <div>
-        <Link to="/fazenda" className="link-no-underline">
-          <button
-            onClick={() => setMessageResponse({ status: false, message: "" })}
-          >
+        <Link to="/" className="link-no-underline">
+          <button onClick={clearSession}>
             <img src={arrow} alt="icone seta" />
-            Voltar
+            Sair
           </button>
         </Link>
 
@@ -26,4 +22,4 @@ const Header = ({
     </header>
   );
 };
-export default Header;
+export default HeaderFarm;

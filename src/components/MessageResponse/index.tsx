@@ -11,7 +11,7 @@ const MessageResponse = ({
 }: {
   messageResponse: MessageResponseType;
 }) => {
-  console.log(messageResponse);
+  // console.log(messageResponse);
 
   return (
     <div className="container-message-response">

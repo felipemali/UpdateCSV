@@ -16,6 +16,7 @@ const Home = () => {
     setMessageResponse,
     setIsSend,
   } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const {
@@ -48,7 +49,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header setMessageResponse={setMessageResponse} />
       <FileUploadForm
         data={data}
         hasRows={hasRows}

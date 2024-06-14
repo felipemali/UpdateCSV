@@ -20,14 +20,21 @@ export const useProcess = () => {
 
   const dataa = [
     {
-      name: "filho2",
+      bottom: "57",
       weight: 500,
-      label: "",
+      label: "rotulo dia 05/06",
     },
+    // {
+    //   name: "animal1",
+    //   weight: 500,
+    //   label: "rotulo dia 05/06",
+    // },
   ];
 
   //verificando login e buscando token
   const getToken = async (login: dataUser) => {
+    console.log(login);
+
     try {
       //http://localhost:8080/sessoes
       //https://api-ebov.fly.dev/sessoes
@@ -117,9 +124,9 @@ export const useProcess = () => {
   const postCSV = async (data: AnimalData[]) => {
     setMessageResponse({ status: false, message: "" });
     const sessionData = getSessionData("idProperties");
-    console.log("dados:", data);
-    console.log("token:", token);
-    console.log("id Propriedade::", sessionData);
+    // console.log("dados:", data);
+    // console.log("token:", token);
+    // console.log("id Propriedade::", sessionData);
     try {
       const headers: { [key: string]: string } = {
         Accept: "application/json",

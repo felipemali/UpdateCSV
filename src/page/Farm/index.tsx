@@ -5,13 +5,19 @@ import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { useProcess } from "../../api";
-import Header from "../../components/Header";
+import HeaderFarm from "../../components/HeaderFarm";
+
+export type selectedFarm = {
+  id: string;
+  name: string;
+};
 
 const Farm = () => {
-  const [selectedFarm, setSelectedFarm] = useState<null | string>(null);
+  const [selectedFarm, setSelectedFarm] = useState<null | selectedFarm>(null);
   const { setToken, properties } = useContext(UserContext);
   const { getProperties } = useProcess();
   const navigate = useNavigate();
+
   useEffect(() => {
     const sessionData = sessionStorage.getItem("userToken");
     if (sessionData) {
@@ -21,19 +27,20 @@ const Farm = () => {
       navigate("/");
     }
   }, []);
+  console.log(properties);
 
-  const handleFarmSelect = (farmId: string | null) => {
+  const handleFarmSelect = (farmId: selectedFarm | null) => {
     setSelectedFarm(farmId);
   };
   return (
     <>
-      <Header />
-      <h2 style={{ textAlign: "center" }}>Propriedades</h2>
+      <HeaderFarm />
+      <h2 style={{ textAlign: "center", color: "#5a5858" }}>Propriedades</h2>
       {properties.map((farm) => (
         <CardFarm
           key={farm.id}
           farm={farm}
-          isSelected={selectedFarm === farm.id}
+          isSelected={selectedFarm?.id === farm.id}
           onSelect={handleFarmSelect}
         />
       ))}

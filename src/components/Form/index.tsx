@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { dataUser } from "../../context/UserContext";
+import { useContext, useEffect, useState } from "react";
+import { UserContext, dataUser } from "../../context/UserContext";
 import "./index.css";
 import eyeClose from "../../assets/img/hide.png";
 import eyeOpen from "../../assets/img/view.png";
@@ -17,6 +17,7 @@ const Form = () => {
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
   const [login, setLogin] = useState({ email: "", password: "" });
   const [isShowPassowrd, setIsShowPassowrd] = useState(false);
+  const { setProperties } = useContext(UserContext);
 
   const { register, handleSubmit, formState } = useForm({
     mode: "all",
@@ -39,6 +40,7 @@ const Form = () => {
       await schema.validate(data);
       setLogin(data);
       setIsFormSubmitting(true);
+      setProperties([]);
 
       console.log("Email válido");
     } catch (error) {

@@ -1,18 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import { selectedFarm } from "../../page/Farm";
 
 const ButtonSelectFarm = ({
   selectedFarm,
 }: {
-  selectedFarm: null | string;
+  selectedFarm: null | selectedFarm;
 }) => {
-  console.log(selectedFarm);
   const navigate = useNavigate();
+  const { setProperties } = useContext(UserContext);
 
   const handleButtonContinue = () => {
     if (selectedFarm) {
-      sessionStorage.setItem("idProperties", selectedFarm);
+      sessionStorage.setItem("idProperties", selectedFarm.id);
       navigate("/home");
+      setProperties([]);
     }
   };
 
