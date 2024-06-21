@@ -124,7 +124,7 @@ export const useProcess = () => {
   const postCSV = async (data: AnimalData[]) => {
     setMessageResponse({ status: false, message: "" });
     const sessionData = getSessionData("idProperties");
-    // console.log("dados:", data);
+    console.log("dados:", data);
     // console.log("token:", token);
     // console.log("id Propriedade::", sessionData);
     try {

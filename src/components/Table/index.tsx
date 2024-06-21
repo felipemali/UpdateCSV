@@ -13,6 +13,7 @@ const Table = ({ data }: TableProps) => {
   const filteredData = data.filter((row) => {
     if (searchVID) {
       return row.bottom.toLowerCase().includes(searchVID.toLowerCase());
+      //tirei o ? da propriedade bottom da tipagem AnimalData
     }
     if (searchWeight) {
       return row.weight.toString().startsWith(searchWeight);
