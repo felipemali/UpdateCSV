@@ -2,6 +2,10 @@
   font-family: "RedHat";
   src: url(../../assets/fonts/RedHatDisplay-BlackItalic.ttf);
 }
+@font-face {
+  font-family: "RedHat Display";
+  src: url(../../assets/fonts/ArchivoBlack-Regular.ttf);
+}
 :root {
   --white: #fff;
   --light-grayy: #eee;
@@ -46,6 +50,11 @@
 }
 .header button img {
   width: 24px;
+}
+.header-home-span {
+  font-family: "RedHat Display";
+  color: var(--medium-brown);
+  font-size: 30px;
 }
 .link-no-underline {
   text-decoration: none;

@@ -2,6 +2,7 @@
   font-family: "RedBold";
   src: url(../../../assets/fonts/RedHatDisplay-Bold.ttf);
 }
+
 :root {
   --white: #fff;
   --black: #000;
@@ -13,7 +14,17 @@
   --grayish-brown: #996d50;
   --container-width: 97%;
 }
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
 
+input[type="password"]::-webkit-inner-spin-button,
+input[type="password"]::-webkit-outer-spin-button,
+input[type="password"]::-webkit-clear-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none;
+}
 .container-login {
   margin: 2rem auto 0 auto;
   width: 92%;

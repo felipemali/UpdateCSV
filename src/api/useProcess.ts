@@ -20,10 +20,31 @@ export const useProcess = () => {
 
   const dataa = [
     {
-      bottom: "57",
-      weight: 500,
-      label: "rotulo dia 05/06",
+      bottom: "31",
+      weight: 355,
+      label: "rotulo dia 19/07",
     },
+    {
+      bottom: "56",
+      weight: 355,
+      label: "rotulo dia 19/07",
+    },
+    {
+      bottom: "34",
+      weight: 355,
+      label: "rotulo dia 19/07",
+    },
+    {
+      bottom: "23",
+      weight: 355,
+      label: "rotulo dia 19/07",
+    },
+    {
+      bottom: "43",
+      weight: 355,
+      label: "rotulo dia 19/07",
+    },
+
     // {
     //   name: "animal1",
     //   weight: 500,
@@ -33,12 +54,12 @@ export const useProcess = () => {
 
   //verificando login e buscando token
   const getToken = async (login: dataUser) => {
-    console.log(login);
+    // console.log(login);
 
     try {
       //http://localhost:8080/sessoes
       //https://api-ebov.fly.dev/sessoes
-      const search = await fetch("http://localhost:8080/sessoes", {
+      const search = await fetch("https://api-ebov.fly.dev/sessoes", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -82,18 +103,24 @@ export const useProcess = () => {
 
   //propriedades
   const getProperties = async () => {
-    console.log("token:", token);
+    // console.log("token:", token);
     // const tokken =
     //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnRhdG9AZmVsaXBlbGltYS5jb20iLCJpYXQiOjE3MTM2MzcwNTksImV4cCI6MTcxNjIyOTA1OSwic3ViIjoiMDA3MTliYzEtMTU3ZS00ZDVkLThlMzUtODQwZTc1ZTJjYTI0In0.gqrkQnom8ZCjgLWCLc70U4z5Rc6l4FVl7VpksLp0Y_o";
 
+    //http://localhost:8080/propriedades/minhas
+    //https://api-ebov.fly.dev/propriedades/minhas
+
     try {
-      const search = await fetch("http://localhost:8080/propriedades/minhas", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const search = await fetch(
+        "https://api-ebov.fly.dev/propriedades/minhas",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!search.ok) {
         throw new Error("Network response was not ok");
@@ -139,12 +166,15 @@ export const useProcess = () => {
 
       //http://localhost:8080/registros/many
       //https://api-ebov.fly.dev/registros/many
+      //http://localhost:8080/registros/create/many   esse é o atual
+      //https://api-ebov.fly.dev/registros/create/many  esse é o atual
+
       const search = await fetch(
-        "http://localhost:8080/registros/create/many",
+        "https://api-ebov.fly.dev/registros/create/many",
         {
           method: "POST",
           headers,
-          body: JSON.stringify(dataa),
+          body: JSON.stringify(data),
         }
       );
 
@@ -163,7 +193,7 @@ export const useProcess = () => {
         const extractedDetails = extractMessageError(errorMessage);
         setMessageResponse({
           status: false,
-          message: `Registro não encontrado! ${extractedDetails}`,
+          message: `Registro não encontrado! ${extractedDetails}. Faça todo reenvio Novamente!`,
         });
       }
     } catch (error) {

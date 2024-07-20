@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-evenly;
   margin: 2rem auto 0 auto;
+  padding-left: 3rem;
 }
 .message-response img {
   height: 40px;

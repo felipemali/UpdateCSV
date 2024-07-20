@@ -9,7 +9,5 @@ export const extractMessageError = (errorMessage: string) => {
   const matches = translatedMessage.match(
     /(?:Nome|VID):\s*[^,]+,\s*Peso:\s*\d+/g
   );
-  console.log(matches);
-
   return matches || [];
 };

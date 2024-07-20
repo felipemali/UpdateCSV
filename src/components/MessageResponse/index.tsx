@@ -19,7 +19,7 @@ const MessageResponse = ({
         style={{
           color: messageResponse.status ? "green" : "red",
           fontSize: "19px",
-          textAlign: "center",
+          textAlign: "left",
         }}
         className="message-response"
       >
