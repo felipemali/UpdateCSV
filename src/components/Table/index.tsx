@@ -44,7 +44,7 @@ const Table = ({ data }: TableProps) => {
         <thead>
           <tr>
             <th>Nº</th>
-            <th>VID</th>
+            <th>RFID</th>
             <th>Peso</th>
           </tr>
         </thead>
