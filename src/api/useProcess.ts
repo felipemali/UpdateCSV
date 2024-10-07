@@ -195,6 +195,8 @@ export const useProcess = () => {
           status: false,
           message: `Registro não encontrado! ${extractedDetails}. Faça todo reenvio Novamente!`,
         });
+        console.log("message", errorData.message);
+        console.log("errorData", errorData);
       }
     } catch (error) {
       console.error("Erro ao processar a solicitação:", error);
