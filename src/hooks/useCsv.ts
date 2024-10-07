@@ -6,6 +6,7 @@ export type CSVData = {
   VID: string;
   Weight: string;
   Nome?: string;
+  RFID: string;
 };
 
 export const useCsv = () => {
@@ -24,8 +25,8 @@ export const useCsv = () => {
         complete: (result: { data: CSVData[] }) => {
           const parsedData: CSVData[] = result.data.filter(
             (row): row is CSVData =>
-              row.VID !== undefined &&
-              row.VID !== "" &&
+              row.RFID !== undefined &&
+              row.RFID !== "" &&
               row.Weight !== undefined &&
               row.Weight !== "0" &&
               row.Weight !== "0.0"
@@ -33,7 +34,7 @@ export const useCsv = () => {
 
           setData(
             parsedData.map((item) => ({
-              bottom: item.VID,
+              bottom: item.RFID,
               weight: parseInt(item.Weight),
             }))
           );
