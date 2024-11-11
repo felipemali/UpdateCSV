@@ -5,7 +5,7 @@ import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { useProcess } from "../../api";
-import HeaderFarm from "../../components/HeaderFarm";
+import HeaderFarm from "./HeaderFarm";
 
 export type selectedFarm = {
   id: string;
@@ -27,7 +27,7 @@ const Farm = () => {
       navigate("/");
     }
   }, []);
-  console.log(properties);
+  // console.log(properties);
 
   const handleFarmSelect = (farmId: selectedFarm | null) => {
     setSelectedFarm(farmId);

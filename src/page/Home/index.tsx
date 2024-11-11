@@ -17,8 +17,6 @@ const Home = () => {
     setIsSend,
   } = useContext(UserContext);
 
-  const navigate = useNavigate();
-
   const {
     data,
     hasRows,
@@ -30,8 +28,10 @@ const Home = () => {
     setFileName,
   } = useCsv();
 
+  const navigate = useNavigate();
+
   const clearData = () => {
-    console.log("caiu no clearData");
+    // console.log("caiu no clearData");
     setFileName("");
     handleSubmit();
     hasRows ? setIsSend(true) : setIsSend(isSend);

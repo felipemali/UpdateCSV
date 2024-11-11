@@ -5,6 +5,21 @@ import Table from "../../components/Table";
 import MessageResponse from "../MessageResponse";
 import EffectLoading from "../EffectLoading";
 import FileName from "../FileName";
+import { AnimalData } from "../../models/CSVData";
+import { message } from "../../context/UserContext";
+
+type FileUploadFormProps = {
+  data: AnimalData[];
+  hasRows: boolean;
+  fileName: string;
+  processFile: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  sending: boolean;
+  fileInputRef: React.RefObject<HTMLInputElement>;
+  isSend: boolean;
+  messageResponse: message;
+  setMessageResponse: (value: message) => void;
+  setIsOpen: (value: boolean) => void;
+};
 
 const FileUploadForm = ({
   data,
@@ -17,8 +32,7 @@ const FileUploadForm = ({
   messageResponse,
   setMessageResponse,
   setIsOpen,
-}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any) => {
+}: FileUploadFormProps) => {
   // console.log(isSend);
   // console.log(messageResponse);
 

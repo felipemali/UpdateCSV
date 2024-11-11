@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Form from "../../components/Form";
 import CardError from "../../components/CardError";
-import HeaderLogin from "../../components/HeaderLogin";
+import HeaderLogin from "./HeaderLogin";
 import { UserContext } from "../../context/UserContext";
 
 export type messageData = {

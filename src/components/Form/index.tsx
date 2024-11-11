@@ -25,7 +25,7 @@ const Form = () => {
   });
   const { errors } = formState;
 
-  console.log("errors", errors);
+  // console.log("errors", errors);
 
   useEffect(() => {
     if (isFormSubmitting && Object.keys(errors).length === 0) {
@@ -42,7 +42,7 @@ const Form = () => {
       setIsFormSubmitting(true);
       setProperties([]);
 
-      console.log("Email válido");
+      // console.log("Email válido");
     } catch (error) {
       // console.error(error);
     }
